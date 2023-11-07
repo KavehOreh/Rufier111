@@ -1,0 +1,106 @@
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
+from kivy.uix.popup import Popup
+
+def calculate(event):
+index = (4 * (int(first_pulse) + int(second_pulse) + int(third_pulse) - 200 )) /10
+
+if age_input.text >= '15':
+if index >= 15:
+print('Низкая работоспособность сердца')
+elif index >= 11 and index < 15:
+print('Удволетворительная работоспособность сердца')
+elif index >= 6 and index < 11:
+print('Средняя работоспособность сердца')
+elif index >= 0.5 and index < 6:
+print('Работоспособность выше среднего')
+else:
+print('Высокая работоспособность сердца')
+
+if age_input.text >= '14' and age_input.text <= '13':
+if index >= 16.5:
+print('Низкая работоспособность сердца')
+elif index >= 12.5 and index < 16.4:
+print('Удволетворительная работоспособность сердца')
+elif index >= 7.5 and index < 12.4:
+print('Средняя работоспособность сердца')
+elif index >= 2 and index < 7.4:
+print('Работоспособность выше среднего')
+else:
+print('Высокая работоспособность сердца')
+
+if age_input.text >= '11' and age_input.text <= '12':
+if index >= 18:
+print('Низкая работоспособность сердца')
+elif index >= 14 and index < 17.9:
+print('Удволетворительная работоспособность сердца')
+elif index >= 9 and index < 13.9:
+print('Средняя работоспособность сердца')
+elif index >= 3.5 and index < 8.9:
+print('Работоспособность выше среднего')
+else:
+print('Высокая работоспособность сердца')
+
+if age_input.text >= '9' and age_input.text <= '10':
+if index >= 19.5:
+print('Низкая работоспособность сердца')
+elif index >= 15.5 and index < 19.4:
+print('Удволетворительная работоспособность сердца')
+elif index >= 10.5 and index < 15.4:
+print('Средняя работоспособность сердца')
+elif index >= 5 and index < 10.4:
+print('Работоспособность выше среднего')
+else:
+print('Высокая работоспособность сердца')
+
+if age_input.text >= '7' and age_input.text <= '8':
+if index >= 21:
+print('Низкая работоспособность сердца')
+elif index >= 17 and index < 20.9:
+print('Удволетворительная работоспособность сердца')
+elif index >= 12 and index < 16.9:
+print('Средняя работоспособность сердца')
+elif index >= 6.5 and index < 11.9:
+print('Работоспособность выше среднего')
+else:
+print('Высокая работоспособность сердца')
+
+class RufierApp(App):
+def build(self):
+global first_pulse
+global second_pulse
+global third_pulse
+
+    name_line = BoxLayout()
+    app_name = Label(text = 'Тест работоспособности сердца')
+    age_text = Label(text ='Возраст:')
+    age_input = TextInput()
+    first_info = Label(text = 'Отдохните несколько минут и измерьте пульс в течение 15 секунд')
+    first_pulse = TextInput()
+    second_info = Label(text = 'Сделайте 30 приседаний за 45 секунд и измерьте пульс в течение 15 секунд')
+    second_pulse = TextInput()       
+    third_info = Label(text = 'Отдохните 30 секунд и измерьте пульс в течение 15 секунд')
+    third_pulse = TextInput()        
+    button = Button(text = 'Тест')
+
+    line = BoxLayout(orientation = 'vertical')
+    name_line = BoxLayout()
+    name_line.add_widget(age_text)
+    name_line.add_widget(age_input)
+    line.add_widget(name_line)
+    line.add_widget(first_info)
+    line.add_widget(first_pulse)
+    line.add_widget(second_info)
+    line.add_widget(second_pulse)
+    line.add_widget(third_info)
+    line.add_widget(third_pulse)
+    line.add_widget(button)
+    
+    button.bind(on_press = calculate)
+
+    return line
+app = RufierApp()
+app.run()
